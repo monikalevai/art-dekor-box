@@ -225,7 +225,7 @@
   }
   .brand{ display:flex; flex-direction:column; line-height:1.15; color:var(--ivory-100); justify-self:start; }
   .brand strong{ font-family:var(--serif); font-size:clamp(.98rem,1.6vw,1.28rem); font-weight:500; letter-spacing:.03em; }
-  .brand span{ font-family:var(--script); font-size:1.05rem; letter-spacing:0; text-transform:none; color:var(--champagne-300); margin-top:.1em; }
+  .brand span{ font-family:var(--script); font-style:normal; font-size:1.05rem; letter-spacing:0; text-transform:none; color:var(--champagne-300); margin-top:.1em; }
   .brand-line2{ display:flex; align-items:baseline; gap:.35em; margin-top:.1em; }
   .brand-line2 span{ margin-top:0; }
 
@@ -316,7 +316,7 @@
     font-weight:500;
   }
   .hero-brand h1 .hero-brand-script{
-    font-family:var(--script); letter-spacing:0; text-transform:none;
+    font-family:var(--script); font-style:normal; letter-spacing:0; text-transform:none;
     color:var(--accent-gold); font-weight:400; font-size:1.2em;
   }
   .hero-sub{
@@ -607,10 +607,10 @@
   }
   .quote-wrap{ max-width:760px; margin:0 auto; padding-inline:var(--gutter); }
   .quote-text{
-    font-family:var(--serif); font-style:italic; font-weight:400;
+    font-family:var(--script); font-style:normal; font-weight:400;
     color:var(--champagne-300);
-    font-size:clamp(1.4rem,2.6vw,2.15rem);
-    line-height:1.55;
+    font-size:72px;
+    line-height:80px;
     margin:0 0 30px;
     text-wrap:balance;
   }
@@ -684,6 +684,13 @@
   /* ========== RESPONSIVE ========== */
   @media (max-width:980px){
     :root{ --section-pad: clamp(64px, 9vw, 110px); }
+    /* Naslovi (h2 + accent): Fraunces 26/32, Alex Brush 40/44 — tačne vrednosti iz Figme, primenjeno samo unutar h2 (ne dira voice-tag ni cta-line koji imaju drugačiji kontekst veličine) */
+    .about-copy h2, .services-head h2, .voice-head h2, .gallery-head h2{ font-size:26px; line-height:32px; }
+    h2 .accent{ font-size:40px; line-height:44px; }
+    /* CTA red i citat — izmereno iz Figma izvoza (375px frame): isti par vrednosti kao naslovi */
+    .cta-content .cta-line{ font-size:26px; line-height:32px; }
+    .cta-content .cta-line .accent{ font-size:40px; line-height:44px; }
+    .quote-text{ font-family:var(--script); font-style:normal; font-weight:400; font-size:40px; line-height:44px; }
     /* Sledeće dve izmene važe SAMO za mobilnu/tablet verziju — desktop ostaje centriran */
     .services-head{ text-align:left; margin-inline:0; }
     .services-head p{ margin-inline:0; }
@@ -723,7 +730,7 @@
     .cta .ph{ object-position:12% center; opacity:.62; }
   }
   @media (max-width:980px){
-    .quote-section{ padding-block:clamp(44px,9vw,72px); }
+    .quote-section{ padding-block:clamp(66px,13.5vw,108px); }
     .cta{ padding-block:clamp(64px,12vw,100px); }
     .cta-contacts{ margin-top:40px; }
     .cta-content .cta-line{ margin-bottom:32px; }
