@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ART & DEKOR BOX</title>
 <meta name="description" content="ART & DEKOR BOX — luksuzna cvećara u Novom Bečeju. Venčanja, veridbe, rođendani, proslave, dekoracije i poslednji pozdrav. Cveće koje govori umesto vas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -94,6 +99,7 @@
   .eyebrow--light{ color:var(--champagne-400); }
 
   .accent{ font-family:var(--script); font-style:normal; color:var(--accent-gold); font-weight:400; font-size:1.3em; line-height:1; letter-spacing:0; }
+  .accent-dot{ color:var(--accent-gold); }
 
   .wrap{
     max-width:1360px;
@@ -206,7 +212,7 @@
   /* ========== NAV ========== */
   .site-nav{
     position:fixed; inset:0 0 auto 0; z-index:500;
-    display:flex; align-items:center; justify-content:space-between;
+    display:grid; grid-template-columns:1fr auto 1fr; align-items:center; column-gap:clamp(12px,2vw,28px);
     padding:clamp(16px,2.4vw,28px) var(--gutter);
     transition:background-color .45s var(--ease), padding .45s var(--ease), border-color .45s var(--ease);
     border-bottom:1px solid transparent;
@@ -217,9 +223,11 @@
     border-bottom:1px solid rgba(185,154,99,.18);
     padding-block:clamp(12px,1.6vw,18px);
   }
-  .brand{ display:flex; flex-direction:column; line-height:1.15; color:var(--ivory-100); }
+  .brand{ display:flex; flex-direction:column; line-height:1.15; color:var(--ivory-100); justify-self:start; }
   .brand strong{ font-family:var(--serif); font-size:clamp(.98rem,1.6vw,1.28rem); font-weight:500; letter-spacing:.03em; }
   .brand span{ font-family:var(--script); font-size:1.05rem; letter-spacing:0; text-transform:none; color:var(--champagne-300); margin-top:.1em; }
+  .brand-line2{ display:flex; align-items:baseline; gap:.35em; margin-top:.1em; }
+  .brand-line2 span{ margin-top:0; }
 
   .nav-links{ display:flex; align-items:center; gap:clamp(20px,2.6vw,42px); }
   .nav-links a{
@@ -245,6 +253,16 @@
   .nav-toggle.is-open span:nth-child(1){ transform:translateY(9px) rotate(45deg); }
   .nav-toggle.is-open span:nth-child(2){ opacity:0; }
   .nav-toggle.is-open span:nth-child(3){ transform:translateY(-9px) rotate(-45deg); }
+
+  .nav-right{ display:flex; align-items:center; justify-self:end; gap:clamp(16px,2vw,26px); grid-column:3; }
+
+  .lang-switch{
+    display:flex; align-items:center; gap:8px;
+    font-family:var(--sans); font-size:.72rem; letter-spacing:.14em; font-weight:500;
+  }
+  .lang-current{ color:var(--champagne-300); }
+  .lang-sep{ color:rgba(239,233,220,.28); font-size:.68rem; }
+  .lang-soon{ color:rgba(239,233,220,.38); cursor:default; }
 
   .mobile-menu{
     position:fixed; inset:0; z-index:480;
@@ -313,6 +331,29 @@
   .hero-sub .accent{ font-size:1.25em; }
   .hero-ctas{ display:flex; flex-wrap:wrap; align-items:center; gap:clamp(14px,2vw,18px); }
   .hero-ctas .btn{ flex:0 0 auto; min-width:212px; }
+  @media (max-width:980px){
+    /* Blagi dodatni gradijent za bolju čitljivost teksta preko cvetnog vizuala (desktop .hero-scrim ostaje nepromenjen) */
+    .hero-scrim{
+      background:
+        linear-gradient(100deg, rgba(15,13,10,.74) 0%, rgba(15,13,10,.56) 32%, rgba(15,13,10,.26) 58%, rgba(15,13,10,.06) 80%),
+        linear-gradient(180deg, rgba(15,13,10,.58) 0%, rgba(15,13,10,.2) 24%, rgba(15,13,10,.24) 70%, rgba(15,13,10,.78) 100%);
+    }
+  }
+  @media (max-width:980px){
+    /* Mobilni/tablet hero: manja visina = manje zumiranja na širokoj fotografiji (cover na uskom kontejneru inače seče gotovo sve osim uskog centralnog pojasa) */
+    .hero{ min-height:clamp(560px, 72svh, 720px); }
+    .hero-img{ object-position:63% 40%; }
+    .hero-content{ max-width:520px; }
+    .hero-scroll{ bottom:clamp(14px,2.6vh,26px); }
+  }
+  @media (max-width:640px){
+    .hero{ min-height:clamp(540px, 76svh, 660px); }
+    .hero-brand{ margin-bottom:clamp(12px,3vw,18px); }
+    .hero-sub{ margin-bottom:clamp(16px,3vw,22px); }
+    /* Dugmad pune širine na telefonu */
+    .hero-ctas{ flex-direction:column; align-items:stretch; width:100%; }
+    .hero-ctas .btn{ width:100%; min-width:0; }
+  }
   .btn--gold{ color:var(--charcoal-950); background:var(--accent-gold); border-color:var(--accent-gold); }
   .btn--gold:hover{ background:transparent; color:var(--accent-gold); border-color:var(--accent-gold); }
   .hero-scroll{
@@ -514,10 +555,70 @@
   }
   @media (prefers-reduced-motion:reduce){
     .flow-item{ animation-play-state:paused; }
+    .flow-lane--top .flow-track, .flow-lane--bottom .flow-track{ animation-play-state:paused; }
   }
   @media (max-width:640px){
     .flow-gallery{ height:clamp(520px,150vw,760px); }
     .flow-item{ width:clamp(130px,30vw,190px); }
+  }
+
+  /* Mobile/tablet: dvotrakasta kontinuirana galerija (desktop .flow-gallery ostaje potpuno nepromenjen, samo se sakriva ispod 980px) */
+  .flow-gallery-mobile{ display:none; }
+  @media (max-width:980px){
+    .flow-gallery{ display:none; }
+    .flow-gallery-mobile{
+      display:flex; flex-direction:column;
+      gap:clamp(12px,3vw,20px);
+      overflow:hidden;
+      background:var(--charcoal-gallery);
+      padding-block:clamp(16px,4vw,28px);
+    }
+    .flow-lane{ overflow:hidden; width:100%; }
+    .flow-track{
+      display:flex; width:max-content;
+      gap:clamp(10px,3vw,18px);
+      will-change:transform;
+    }
+    .flow-track img{
+      width:clamp(190px,50vw,260px);
+      aspect-ratio:3/4;
+      object-fit:cover;
+      display:block;
+      border-radius:1px;
+      flex:none;
+    }
+    .flow-lane--top .flow-track{ animation:flowTrackLeft 32s linear infinite; }
+    .flow-lane--bottom .flow-track{ animation:flowTrackRight 32s linear infinite; }
+  }
+  @keyframes flowTrackLeft{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  @keyframes flowTrackRight{
+    from{ transform:translateX(-50%); }
+    to{ transform:translateX(0); }
+  }
+
+  /* ========== CITAT — editorial pauza ========== */
+  .quote-section{
+    background:var(--void);
+    padding-block:clamp(60px,8vw,110px);
+    text-align:center;
+  }
+  .quote-wrap{ max-width:760px; margin:0 auto; padding-inline:var(--gutter); }
+  .quote-text{
+    font-family:var(--serif); font-style:italic; font-weight:400;
+    color:var(--champagne-300);
+    font-size:clamp(1.4rem,2.6vw,2.15rem);
+    line-height:1.55;
+    margin:0 0 30px;
+    text-wrap:balance;
+  }
+  .quote-author{
+    display:block; font-style:normal;
+    font-family:var(--sans); font-weight:400;
+    font-size:.85rem; letter-spacing:.12em;
+    color:var(--cream-mute);
   }
 
   /* ========== CTA ========== */
@@ -554,7 +655,7 @@
 
   /* ========== FOOTER ========== */
   footer{ background:var(--void); border-top:1px solid rgba(185,154,99,.16); padding-block:clamp(56px,6vw,80px) 28px; }
-  .footer-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:clamp(36px,5vw,60px); align-items:start; }
+  .footer-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:clamp(28px,4vw,48px); align-items:start; }
   .footer-brand .brand{ color:var(--ivory-100); margin-bottom:18px; }
   .footer-brand p{ font-family:var(--serif); font-style:italic; color:var(--cream-mute); font-size:1rem; max-width:260px; }
   .footer-social{ display:flex; gap:16px; margin-top:20px; }
@@ -567,26 +668,52 @@
   .footer-col a:hover{ color:var(--ivory-100); }
   .footer-bottom{
     margin-top:clamp(48px,6vw,72px); padding-top:22px; border-top:1px solid var(--line-on-dark);
-    display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px;
+    display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:10px 16px;
     font-size:.76rem; color:var(--cream-mute); letter-spacing:.02em;
+  }
+  .footer-bottom .fb-left{ justify-self:start; }
+  .footer-bottom .fb-center{ justify-self:center; text-align:center; }
+  .footer-bottom .fb-right{ justify-self:end; text-align:right; }
+  .footer-credit a{ color:var(--cream-mute); transition:color .25s var(--ease); }
+  .footer-credit a:hover{ color:var(--champagne-300); }
+  @media (max-width:640px){
+    .footer-bottom{ grid-template-columns:1fr; justify-items:center; text-align:center; }
+    .footer-bottom .fb-left, .footer-bottom .fb-center, .footer-bottom .fb-right{ justify-self:center; text-align:center; }
   }
 
   /* ========== RESPONSIVE ========== */
   @media (max-width:980px){
+    :root{ --section-pad: clamp(64px, 9vw, 110px); }
+    /* Sledeće dve izmene važe SAMO za mobilnu/tablet verziju — desktop ostaje centriran */
+    .services-head{ text-align:left; margin-inline:0; }
+    .services-head p{ margin-inline:0; }
+    .voice-head{ text-align:left; margin-inline:0; }
     .nav-links{ display:none; }
-    .nav-toggle{ display:block; }
+    .nav-toggle{ display:block; width:44px; height:44px; }
+    .nav-toggle span:nth-child(1){ top:13px; }
+    .nav-toggle span:nth-child(2){ top:22px; }
+    .nav-toggle span:nth-child(3){ top:31px; }
+    .nav-toggle.is-open span:nth-child(1){ transform:translateY(9px) rotate(45deg); }
+    .nav-toggle.is-open span:nth-child(3){ transform:translateY(-9px) rotate(-45deg); }
     .about .wrap{ grid-template-columns:1fr; gap:36px; }
     .about-visual{ aspect-ratio:4/5; max-width:420px; margin-inline:auto; }
     .services-grid{ grid-template-columns:repeat(2,1fr); }
     .service-card, .service-card:nth-child(1), .service-card:nth-child(2), .service-card:nth-child(6), .service-card:nth-child(7){ grid-column:span 1; aspect-ratio:3/4; }
     .service-card:nth-child(8){ grid-column:span 2; aspect-ratio:16/9; }
+    /* Opis usluge na skrolu (touch): isti vizuelni efekat kao desktop :hover, samo drugačiji okidač — vidi IntersectionObserver za .service-card u JS-u */
+    .service-card.svc-visible::before{ background:linear-gradient(180deg, rgba(20,18,15,.15) 0%, rgba(20,18,15,.3) 45%, rgba(20,18,15,.92) 100%); }
+    .service-card.svc-visible .service-card-body{ transform:translateY(0); }
+    .service-card.svc-visible p{ opacity:1; max-height:3em; }
     .colors-panel{ grid-template-columns:1fr; }
     .footer-grid{ grid-template-columns:1fr 1fr; }
     .footer-brand{ grid-column:1/-1; }
   }
   @media (max-width:640px){
+    :root{ --section-pad: clamp(48px, 12vw, 76px); }
     .services-grid{ grid-template-columns:1fr; }
     .service-card, .service-card:nth-child(1), .service-card:nth-child(2), .service-card:nth-child(6), .service-card:nth-child(7), .service-card:nth-child(8){ grid-column:span 1; aspect-ratio:4/5; }
+    .about .wrap{ gap:26px; }
+    .about-visual{ max-width:300px; }
     .cta-contacts div{ border-right:0; border-bottom:1px solid rgba(185,154,99,.25); }
     .cta-contacts div:last-child{ border-bottom:0; }
     .footer-grid{ grid-template-columns:1fr; }
@@ -595,12 +722,20 @@
     /* Uzak/visok viewport: cover na širokom banner-u bi prikazao samo crni centar — pomeramo fokus na levi cvetni klaster */
     .cta .ph{ object-position:12% center; opacity:.62; }
   }
+  @media (max-width:980px){
+    .quote-section{ padding-block:clamp(44px,9vw,72px); }
+    .cta{ padding-block:clamp(64px,12vw,100px); }
+    .cta-contacts{ margin-top:40px; }
+    .cta-content .cta-line{ margin-bottom:32px; }
+  }
 </style>
+</head>
+<body>
 
 <header class="site-nav" id="siteNav">
   <a href="#pocetna" class="brand">
-    <strong>ART &amp; DEKOR BOX</strong>
-    <span>Cvećara</span>
+    <strong>ART &amp; DEKOR</strong>
+    <div class="brand-line2"><strong>BOX</strong> <span>Cvećara</span></div>
   </a>
   <nav class="nav-links" aria-label="Glavna navigacija">
     <a href="#pocetna">Početna</a>
@@ -610,9 +745,16 @@
     <a href="#galerija">Galerija</a>
     <a href="#kontakt">Kontakt</a>
   </nav>
-  <button class="nav-toggle" id="navToggle" aria-label="Otvori meni" aria-expanded="false" aria-controls="mobileMenu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-right">
+    <div class="lang-switch" aria-label="Izbor jezika">
+      <span class="lang-current" aria-current="true">SR</span>
+      <span class="lang-sep">|</span>
+      <span class="lang-soon" title="Uskoro dostupno">HU</span>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Otvori meni" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
@@ -654,7 +796,7 @@
       <img class="about-visual" src="img/about.webp" alt="Vlasnica cvećare ART & DEKOR BOX sa bujnim buketom belih tulipana i božura" loading="lazy">
       <div class="about-copy">
         <span class="eyebrow eyebrow--light">O nama</span>
-        <h2 id="about-h">Cveće koje nosi <em class="accent">vašu priču</em>.</h2>
+        <h2 id="about-h">Cveće koje nosi <em class="accent">vašu priču</em><span class="accent-dot">.</span></h2>
         <p>U ART &amp; DEKOR BOX verujemo da pravi aranžman nije samo izbor lepog cveća. On treba da prenese osećaj, iznenadi, obraduje i kaže nešto umesto vas.</p>
         <p>Godinama stvaramo bukete i cvetne aranžmane za najrazličitije prilike, od malog znaka pažnje i rođendanskog iznenađenja, do venčanja, proslava, posebnih događaja i trenutaka kada je potrebno reći nešto mnogo dublje.</p>
         <p>Volimo da svaki aranžman bude drugačiji. Nekada je to nežna kombinacija pastelnih tonova, nekada raskošno cveće dubokih boja, a nekada buket pun živih boja i energije.</p>
@@ -738,7 +880,7 @@
     <div class="wrap">
       <div class="voice-head">
         <span class="eyebrow eyebrow--light">Značenje i simbolika</span>
-        <h2 id="voice-h"><em class="accent">Govor</em> cveća</h2>
+        <h2 id="voice-h"><em class="accent">Govor</em> cveća.</h2>
         <span class="voice-tag">Ponekad je dovoljno izabrati <em class="accent">pravi cvet.</em></span>
         <p>Još od davnina cveću se pripisuje značenje. Boja, oblik i vrsta cveta mogu reći ono što reči ne umeju. Istražite mali jezik cveća.</p>
       </div>
@@ -785,6 +927,48 @@
       <div class="flow-item flow-item--right" style="--delay:-20.25s;"><img class="ph" src="img/gallery-11.webp" data-slot="11" alt=""></div>
       <div class="flow-item flow-item--right" style="--delay:-24.75s;"><img class="ph" src="img/gallery-12.webp" data-slot="12" alt=""></div>
     </div>
+    <div class="flow-gallery-mobile" aria-hidden="true">
+      <div class="flow-lane flow-lane--top">
+        <div class="flow-track">
+          <img src="img/gallery-1.webp" alt="">
+          <img src="img/gallery-2.webp" alt="">
+          <img src="img/gallery-3.webp" alt="">
+          <img src="img/gallery-4.webp" alt="">
+          <img src="img/gallery-5.webp" alt="">
+          <img src="img/gallery-6.webp" alt="">
+          <img src="img/gallery-1.webp" alt="">
+          <img src="img/gallery-2.webp" alt="">
+          <img src="img/gallery-3.webp" alt="">
+          <img src="img/gallery-4.webp" alt="">
+          <img src="img/gallery-5.webp" alt="">
+          <img src="img/gallery-6.webp" alt="">
+        </div>
+      </div>
+      <div class="flow-lane flow-lane--bottom">
+        <div class="flow-track">
+          <img src="img/gallery-7.webp" alt="">
+          <img src="img/gallery-8.webp" alt="">
+          <img src="img/gallery-9.webp" alt="">
+          <img src="img/gallery-10.webp" alt="">
+          <img src="img/gallery-11.webp" alt="">
+          <img src="img/gallery-12.webp" alt="">
+          <img src="img/gallery-7.webp" alt="">
+          <img src="img/gallery-8.webp" alt="">
+          <img src="img/gallery-9.webp" alt="">
+          <img src="img/gallery-10.webp" alt="">
+          <img src="img/gallery-11.webp" alt="">
+          <img src="img/gallery-12.webp" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CITAT -->
+  <section class="quote-section reveal" aria-label="Citat">
+    <div class="quote-wrap">
+      <blockquote class="quote-text">„Cveće je muzika zemlje. Sa zemaljskih usana izgovoreno bez zvuka.“</blockquote>
+      <cite class="quote-author">Edwin Curran</cite>
+    </div>
   </section>
 
   <!-- CTA / KONTAKT -->
@@ -798,7 +982,7 @@
       <div class="cta-contacts">
         <div><span class="label">Facebook</span><a class="value" href="https://www.facebook.com/artdecorbox.viragkoteszet?locale=sr_RS" target="_blank" rel="noopener">Art &amp; Dekor Box</a></div>
         <div><span class="label">Instagram</span><a class="value" href="https://www.instagram.com/cvetaj_sa_lidijom/" target="_blank" rel="noopener">@cvetaj_sa_lidijom</a></div>
-        <div><span class="label">Adresa</span><span class="value">Maršala Tita 11, Novi Bečej</span></div>
+        <div><span class="label">Adresa</span><span class="value">Maršala Tita 11,<br>Novi Bečej</span></div>
       </div>
     </div>
   </section>
@@ -841,14 +1025,20 @@
           <li><a href="tel:+381642900541">064 290 0541</a></li>
           <li>Email: <a href="mailto:lidia.komaromi@gmail.com">lidia.komaromi@gmail.com</a></li>
           <li>Adresa: Maršala Tita 11, Novi Bečej</li>
-          <li>Radno vreme: Pon–pet 08:00–17:00</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Radno vreme</h5>
+        <ul>
+          <li>Pon–pet 08:00–17:00</li>
           <li>Subota 08:00–16:00</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 ART &amp; DEKOR BOX CVEĆARA</span>
-      <span>Sva prava zadržana.</span>
+      <span class="fb-left">© 2026 ART &amp; DEKOR BOX CVEĆARA</span>
+      <span class="fb-center">Sva prava zadržana.</span>
+      <span class="fb-right footer-credit">Created with ♡ by <a href="https://monikalevai.com/" target="_blank" rel="noopener">Monika Levai</a></span>
     </div>
   </div>
 </footer>
@@ -907,6 +1097,24 @@
     revealEls.forEach(function(el){ io.observe(el); });
   }
 
+  /* Usluge — opis kartice na skrolu, za touch uređaje (desktop hover ostaje nepromenjen, ova klasa nema efekat iznad 980px) */
+  var svcCards = document.querySelectorAll('.service-card');
+  if (svcCards.length){
+    if (!reduceMotion && 'IntersectionObserver' in window){
+      var svcIo = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting){
+            entry.target.classList.add('svc-visible');
+            svcIo.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      svcCards.forEach(function(card){ svcIo.observe(card); });
+    } else {
+      svcCards.forEach(function(card){ card.classList.add('svc-visible'); });
+    }
+  }
+
   /* Govor cveća — boje */
   var colors = [
     { name:'Crvena', meaning:'Ljubav · strast · snaga', hex:'var(--c-red)', img:'img/color-crvena.webp' },
@@ -956,3 +1164,5 @@
   setActiveColor(0);
 })();
 </script>
+</body>
+</html>
