@@ -1,0 +1,958 @@
+<title>ART & DEKOR BOX</title>
+<meta name="description" content="ART & DEKOR BOX — luksuzna cvećara u Novom Bečeju. Venčanja, veridbe, rođendani, proslave, dekoracije i poslednji pozdrav. Cveće koje govori umesto vas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Alex+Brush&family=Inter:wght@300;400;500;600;700&display=swap">
+<style>
+  /* ========== TOKENS ========== */
+  :root{
+    --charcoal-950:#11100E;
+    --charcoal-900:#171713;
+    --charcoal-850:#1C1B16;
+    --charcoal-800:#232019;
+    --olive-900:#363B2B;
+    --olive-700:#565C43;
+    --olive-500:#7C8563;
+    --ivory-50:#171713;
+    --ivory-100:#E8DFD2;
+    --ink-900:#E8DFD2;
+    --stone-600:#AEA394;
+    --stone-400:#8F8573;
+    --line-on-light:#332E27;
+    --line-on-dark:#332E27;
+    --void:#11100E;
+    --charcoal-about:#171713;
+    --charcoal-services:#171713;
+    --charcoal-voice:#171713;
+    --charcoal-gallery:#171713;
+    --surface-1:#1C1B16;
+    --blush-300:#C9958E;
+    --blush-500:#B07E77;
+    --wine-800:#4A2028;
+    --wine-600:#4A2028;
+    --wine-400:#4A2028;
+    --champagne-400:#A8842E;
+    --champagne-300:#A8842E;
+    --cream-text:#E8DFD2;
+    --cream-mute:#AEA394;
+    --accent-rose:#A8842E;
+    --accent-gold:#A8842E;
+    --accent-burgundy:#4A2028;
+    --c-red:#7A2430;
+    --c-white:#F7F3EA;
+    --c-pink:#D8B7AC;
+    --c-yellow:#C9A15B;
+    --c-purple:#5B4A63;
+    --c-orange:#B06A3E;
+
+    --serif:"Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    --sans:"Inter", "Helvetica Neue", Arial, sans-serif;
+    --script:"Alex Brush", "Brush Script MT", cursive;
+
+    --fs-hero: clamp(1.8rem, 4.4vw, 4.1rem);
+    --fs-h2: clamp(1.65rem, 3.4vw, 2.7rem);
+    --fs-h3: clamp(1.1rem, 1.6vw, 1.4rem);
+    --fs-lead: clamp(1rem, 1.3vw, 1.15rem);
+    --fs-body: clamp(1rem, 1vw, 1.08rem);
+    --fs-small: 0.86rem;
+    --fs-eyebrow: 0.78rem;
+
+    --gutter: clamp(20px, 6vw, 80px);
+    --section-pad: clamp(96px, 12vw, 180px);
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--void);
+    color:var(--ink-900);
+    font-family:var(--sans);
+    font-size:var(--fs-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  img{ max-width:100%; display:block; }
+  h1,h2,h3{ font-family:var(--serif); font-optical-sizing:auto; font-weight:500; margin:0; text-wrap:balance; }
+  h4,h5,h6{ margin:0; }
+  p{ margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; cursor:pointer; }
+  ::selection{ background:var(--wine-800); color:var(--cream-text); }
+
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:var(--fs-eyebrow);
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+  .eyebrow--dark{ color:var(--champagne-300); }
+  .eyebrow--light{ color:var(--champagne-400); }
+
+  .accent{ font-family:var(--script); font-style:normal; color:var(--accent-gold); font-weight:400; font-size:1.3em; line-height:1; letter-spacing:0; }
+
+  .wrap{
+    max-width:1360px;
+    margin-inline:auto;
+    padding-inline:var(--gutter);
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:.6em;
+    font-family:var(--sans);
+    font-size:.82rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    font-weight:500;
+    padding:1.05em 2.1em;
+    border:1px solid currentColor;
+    transition:background-color .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease);
+    white-space:nowrap;
+  }
+  .btn--light{ color:var(--ivory-100); border-color:rgba(247,242,232,.55); }
+  .btn--light:hover{ background:var(--ivory-100); color:var(--charcoal-950); border-color:var(--ivory-100); }
+  .btn--dark{ color:var(--ink-900); border-color:var(--ink-900); }
+  .btn--dark:hover{ background:var(--ink-900); color:var(--ivory-50); }
+  .btn--ghost-cream{ color:var(--cream-text); border-color:rgba(239,233,220,.4); }
+  .btn--ghost-cream:hover{ background:var(--cream-text); color:var(--charcoal-950); border-color:var(--cream-text); }
+
+  .link-arrow{
+    display:inline-flex;
+    align-items:center;
+    gap:.55em;
+    font-size:.82rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-weight:500;
+    padding-bottom:.35em;
+    border-bottom:1px solid currentColor;
+    transition:gap .3s var(--ease), opacity .3s var(--ease);
+  }
+  .link-arrow:hover{ gap:.9em; opacity:.75; }
+
+  /* reveal-on-scroll: progressive enhancement only, JS adds .is-hidden before observing */
+  .reveal.is-hidden{ opacity:0; transform:translateY(26px); }
+  .reveal{ transition:opacity .9s var(--ease), transform .9s var(--ease); }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .reveal, .reveal.is-hidden{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* ========== PLACEHOLDER "PHOTO" BLOCKS ========== */
+  .ph{ position:relative; overflow:hidden; background:var(--charcoal-900); }
+  .ph::after{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(0,0,0,.05) 0 1px, transparent 1px 3px);
+    mix-blend-mode:overlay;
+    opacity:.5;
+    pointer-events:none;
+  }
+  .ph-1{ background:
+      radial-gradient(120% 90% at 15% 20%, #6B3540 0%, transparent 55%),
+      radial-gradient(90% 80% at 85% 75%, #4A4F37 0%, transparent 60%),
+      radial-gradient(70% 70% at 50% 100%, #C79484 0%, transparent 65%),
+      linear-gradient(160deg, #241F19, #171410); }
+  .ph-2{ background:
+      radial-gradient(100% 90% at 80% 15%, #7C2C37 0%, transparent 55%),
+      radial-gradient(90% 90% at 10% 85%, #565C43 0%, transparent 60%),
+      linear-gradient(200deg, #221E18, #14120F); }
+  .ph-3{ background:
+      radial-gradient(90% 90% at 50% 0%, #8C4A55 0%, transparent 55%),
+      radial-gradient(100% 100% at 90% 100%, #3A3F2E 0%, transparent 60%),
+      linear-gradient(180deg, #241F19, #181410); }
+  .ph-4{ background:
+      radial-gradient(100% 80% at 20% 90%, #C9A15B 0%, transparent 45%),
+      radial-gradient(90% 90% at 80% 10%, #5A1F29 0%, transparent 55%),
+      linear-gradient(210deg, #221D17, #14120F); }
+  .ph-5{ background:
+      radial-gradient(90% 90% at 85% 85%, #D8B7AC 0%, transparent 50%),
+      radial-gradient(100% 90% at 10% 10%, #363B2B 0%, transparent 55%),
+      linear-gradient(190deg, #201C16, #14120F); }
+  .ph-6{ background:
+      radial-gradient(100% 90% at 50% 100%, #7C2C37 0%, transparent 55%),
+      radial-gradient(80% 80% at 15% 15%, #7C8563 0%, transparent 55%),
+      linear-gradient(170deg, #241F19, #171410); }
+  .ph-7{ background:
+      radial-gradient(90% 90% at 25% 25%, #9E4552 0%, transparent 50%),
+      radial-gradient(100% 100% at 90% 90%, #B99A63 0%, transparent 40%),
+      linear-gradient(200deg, #221E18, #14120F); }
+  .ph-8{ background:
+      radial-gradient(100% 90% at 70% 20%, #565C43 0%, transparent 55%),
+      radial-gradient(90% 90% at 15% 90%, #C79484 0%, transparent 50%),
+      linear-gradient(160deg, #201C16, #14120F); }
+  .ph-9{ background:
+      radial-gradient(90% 90% at 50% 50%, #5A1F29 0%, transparent 60%),
+      radial-gradient(100% 100% at 0% 0%, #3A3F2E 0%, transparent 55%),
+      linear-gradient(220deg, #241F19, #171410); }
+  .ph-banner{ background:
+      radial-gradient(60% 130% at 38% 50%, #6B3540 0%, transparent 60%),
+      radial-gradient(50% 100% at 62% 50%, #565C43 0%, transparent 55%),
+      linear-gradient(90deg, #1C1912, #14120F, #1C1912); }
+  .ph-note{
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    font-family:var(--sans); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase;
+    color:rgba(239,233,220,.4); white-space:nowrap; pointer-events:none;
+  }
+
+  /* ========== NAV ========== */
+  .site-nav{
+    position:fixed; inset:0 0 auto 0; z-index:500;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:clamp(16px,2.4vw,28px) var(--gutter);
+    transition:background-color .45s var(--ease), padding .45s var(--ease), border-color .45s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  .site-nav.is-solid{
+    background:rgba(27,24,20,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(185,154,99,.18);
+    padding-block:clamp(12px,1.6vw,18px);
+  }
+  .brand{ display:flex; flex-direction:column; line-height:1.15; color:var(--ivory-100); }
+  .brand strong{ font-family:var(--serif); font-size:clamp(.98rem,1.6vw,1.28rem); font-weight:500; letter-spacing:.03em; }
+  .brand span{ font-family:var(--script); font-size:1.05rem; letter-spacing:0; text-transform:none; color:var(--champagne-300); margin-top:.1em; }
+
+  .nav-links{ display:flex; align-items:center; gap:clamp(20px,2.6vw,42px); }
+  .nav-links a{
+    font-size:.76rem; letter-spacing:.16em; text-transform:uppercase; font-weight:500;
+    color:var(--ivory-100); position:relative; padding-bottom:6px;
+  }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; right:100%; bottom:0; height:1px;
+    background:var(--champagne-300); transition:right .35s var(--ease);
+  }
+  .nav-links a:hover::after{ right:0; }
+
+  .nav-toggle{
+    display:none; background:none; border:0; width:34px; height:22px; position:relative; z-index:600;
+  }
+  .nav-toggle span{
+    position:absolute; left:0; right:0; height:1px; background:var(--ivory-100);
+    transition:transform .3s var(--ease), opacity .3s var(--ease);
+  }
+  .nav-toggle span:nth-child(1){ top:2px; }
+  .nav-toggle span:nth-child(2){ top:11px; }
+  .nav-toggle span:nth-child(3){ top:20px; }
+  .nav-toggle.is-open span:nth-child(1){ transform:translateY(9px) rotate(45deg); }
+  .nav-toggle.is-open span:nth-child(2){ opacity:0; }
+  .nav-toggle.is-open span:nth-child(3){ transform:translateY(-9px) rotate(-45deg); }
+
+  .mobile-menu{
+    position:fixed; inset:0; z-index:480;
+    background:var(--charcoal-950);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2.1rem;
+    opacity:0; visibility:hidden; transform:translateY(-14px);
+    transition:opacity .4s var(--ease), transform .4s var(--ease), visibility 0s linear .4s;
+  }
+  .mobile-menu.is-open{ opacity:1; visibility:visible; transform:translateY(0); transition:opacity .4s var(--ease), transform .4s var(--ease); }
+  .mobile-menu a{ font-family:var(--serif); font-size:1.9rem; color:var(--ivory-100); font-weight:500; }
+  .mobile-menu .eyebrow{ color:var(--champagne-300); }
+
+  /* ========== HERO ========== */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    background:var(--charcoal-950);
+    isolation:isolate;
+  }
+  .hero-img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    object-position:60% 48%;
+  }
+  .hero-scrim{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(100deg, rgba(15,13,10,.62) 0%, rgba(15,13,10,.42) 26%, rgba(15,13,10,.14) 52%, rgba(15,13,10,0) 70%),
+      linear-gradient(180deg, rgba(15,13,10,.5) 0%, rgba(15,13,10,.08) 20%, rgba(15,13,10,.08) 74%, rgba(15,13,10,.68) 100%);
+  }
+  .hero-content{
+    position:relative; z-index:2;
+    text-align:left;
+    max-width:620px;
+    padding-inline:var(--gutter);
+    display:flex; flex-direction:column; align-items:flex-start;
+    opacity:0; transform:translateY(18px);
+    animation:heroIn 1.1s var(--ease) .25s forwards;
+  }
+  @keyframes heroIn{ to{ opacity:1; transform:translateY(0); } }
+  @media (prefers-reduced-motion: reduce){ .hero-content{ animation:none; opacity:1; transform:none; } }
+  .hero-eyebrow{ color:var(--champagne-400); display:block; margin-bottom:8px; }
+  .hero-brand{ margin-bottom:clamp(16px,2.2vw,24px); }
+  .hero-brand h1{
+    color:var(--ivory-100);
+    font-size:var(--fs-hero);
+    line-height:1.1;
+    letter-spacing:.02em;
+    font-weight:500;
+  }
+  .hero-brand h1 .hero-brand-script{
+    font-family:var(--script); letter-spacing:0; text-transform:none;
+    color:var(--accent-gold); font-weight:400; font-size:1.2em;
+  }
+  .hero-sub{
+    font-family:var(--sans); font-weight:400;
+    font-size:clamp(1rem,1.4vw,1.15rem);
+    line-height:1.55;
+    color:var(--stone-600);
+    margin-bottom:clamp(20px,2.6vw,30px);
+    max-width:34ch;
+    text-wrap:balance;
+  }
+  .hero-sub .accent{ font-size:1.25em; }
+  .hero-ctas{ display:flex; flex-wrap:wrap; align-items:center; gap:clamp(14px,2vw,18px); }
+  .hero-ctas .btn{ flex:0 0 auto; min-width:212px; }
+  .btn--gold{ color:var(--charcoal-950); background:var(--accent-gold); border-color:var(--accent-gold); }
+  .btn--gold:hover{ background:transparent; color:var(--accent-gold); border-color:var(--accent-gold); }
+  .hero-scroll{
+    position:absolute; left:50%; bottom:clamp(20px,4vh,40px); transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    color:var(--cream-mute); z-index:2;
+  }
+  .hero-scroll span{ font-size:.66rem; letter-spacing:.24em; text-transform:uppercase; }
+  .hero-scroll i{ width:1px; height:34px; background:linear-gradient(var(--champagne-300), transparent); display:block; }
+
+  /* ========== O NAMA ========== */
+  .about{
+    background:
+      radial-gradient(90% 70% at 12% 0%, rgba(74,32,40,.16) 0%, transparent 55%),
+      var(--charcoal-about);
+    padding-block:var(--section-pad);
+  }
+  .about .wrap{
+    display:grid; grid-template-columns: .92fr 1.08fr; gap:clamp(32px,6vw,90px); align-items:center;
+  }
+  .about-visual{
+    aspect-ratio:4/5; width:100%; height:auto; object-fit:cover; object-position:50% 12%;
+    -webkit-mask-image:linear-gradient(to bottom, #000 0%, #000 68%, transparent 97%);
+    mask-image:linear-gradient(to bottom, #000 0%, #000 68%, transparent 97%);
+  }
+  .about-copy{ max-width:560px; }
+  .about-copy .eyebrow{ display:block; margin-bottom:8px; }
+  .about-copy h2{ font-size:var(--fs-h2); color:var(--ink-900); margin-bottom:26px; }
+  .about-copy p{ color:var(--stone-600); font-size:var(--fs-lead); line-height:1.75; }
+  .about-copy p + p{ margin-top:1.3em; }
+  .about-copy .about-highlight{
+    font-family:var(--serif); font-style:italic; font-weight:500;
+    color:var(--accent-gold); font-size:1.2em; line-height:1.5;
+    margin-top:1.5em !important; margin-bottom:.2em;
+  }
+  .about-copy .about-highlight + p{ margin-top:1.3em; }
+  .about-copy .link-arrow{ margin-top:32px; color:var(--accent-gold); }
+
+  /* ========== USLUGE ========== */
+  .services{
+    background:
+      radial-gradient(120% 85% at 50% 0%, rgba(86,92,67,.16) 0%, transparent 60%),
+      radial-gradient(90% 70% at 100% 100%, rgba(74,32,40,.14) 0%, transparent 55%),
+      var(--charcoal-services);
+    padding-block:var(--section-pad);
+  }
+  .services-head{ text-align:center; max-width:680px; margin:0 auto clamp(56px,7vw,88px); }
+  .services-head .eyebrow{ display:block; margin-bottom:8px; }
+  .services-head h2{ color:var(--ivory-100); font-size:var(--fs-h2); margin-bottom:22px; }
+  .services-head p{ color:var(--cream-mute); font-size:var(--fs-lead); line-height:1.75; text-wrap:balance; max-width:52ch; margin-inline:auto; }
+
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:clamp(10px,1.4vw,20px);
+  }
+  .service-card{
+    position:relative; overflow:hidden; border-radius:1px;
+    aspect-ratio:3/4;
+    grid-column:span 2;
+  }
+  .service-card:nth-child(1){ grid-column:span 3; }
+  .service-card:nth-child(2){ grid-column:span 3; }
+  .service-card:nth-child(6){ grid-column:span 3; }
+  .service-card:nth-child(7){ grid-column:span 3; }
+  .service-card:nth-child(8){ grid-column:span 6; aspect-ratio:16/6; }
+  .service-card .ph{ position:absolute; inset:0; transition:transform .8s var(--ease); }
+  .service-card img.ph{ width:100%; height:100%; object-fit:cover; display:block; }
+  .service-card:hover .ph{ transform:scale(1.06); }
+  .service-card::before{
+    content:""; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg, rgba(20,18,15,.05) 0%, rgba(20,18,15,.15) 45%, rgba(20,18,15,.86) 100%);
+    transition:background .5s var(--ease);
+  }
+  .service-card:hover::before{ background:linear-gradient(180deg, rgba(20,18,15,.15) 0%, rgba(20,18,15,.3) 45%, rgba(20,18,15,.92) 100%); }
+  .service-card-body{
+    position:absolute; left:0; right:0; bottom:0; z-index:2;
+    padding:clamp(18px,2.2vw,32px);
+    transform:translateY(6px); transition:transform .5s var(--ease);
+  }
+  .service-card:hover .service-card-body{ transform:translateY(0); }
+  .service-card h3{ color:var(--ivory-100); font-size:var(--fs-h3); margin-bottom:.4em; }
+  .service-card p{
+    color:var(--accent-gold); font-family:var(--script); font-style:normal; font-size:1.35rem; line-height:1;
+    opacity:0; max-height:0; transition:opacity .45s var(--ease), max-height .45s var(--ease);
+  }
+  .service-card:hover p, .service-card:focus-within p{ opacity:1; max-height:3em; }
+
+  /* ========== GOVOR CVEĆA ========== */
+  .voice{
+    background:
+      radial-gradient(100% 60% at 50% 100%, rgba(74,32,40,.14) 0%, transparent 60%),
+      var(--charcoal-voice);
+    padding-block:var(--section-pad);
+  }
+  .voice-head{ max-width:680px; margin:0 auto clamp(60px,7vw,96px); text-align:center; }
+  .voice-head .eyebrow{ display:block; margin-bottom:8px; }
+  .voice-head h2{ font-size:var(--fs-h2); color:var(--ink-900); margin-bottom:14px; }
+  .voice-head .voice-tag{ font-family:var(--sans); font-weight:400; font-size:1.05rem; color:var(--stone-600); margin-bottom:20px; display:block; }
+  .voice-head p{ color:var(--stone-600); font-size:var(--fs-lead); line-height:1.75; }
+
+  .voice-block + .voice-block{ margin-top:clamp(80px,9vw,130px); }
+  .voice-block-head{ display:flex; align-items:baseline; gap:18px; margin-bottom:clamp(28px,4vw,46px); }
+  .voice-block-head h3{ font-size:1.5rem; color:var(--ink-900); }
+  .voice-block-head .rule{ flex:1; height:1px; background:var(--line-on-light); }
+
+  .colors-panel{
+    display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(28px,4vw,64px); align-items:stretch;
+  }
+  .color-list{ display:flex; flex-direction:column; }
+  .color-item{
+    display:flex; align-items:center; gap:18px;
+    padding:16px 4px; border-top:1px solid var(--line-on-light);
+    background:none; border-left:0; border-right:0; border-bottom:0; text-align:left; width:100%;
+  }
+  .color-item:last-child{ border-bottom:1px solid var(--line-on-light); }
+  .color-dot{ width:15px; height:15px; border-radius:50%; flex-shrink:0; box-shadow:inset 0 0 0 1px rgba(0,0,0,.08); }
+  .color-item span{ font-family:var(--serif); font-size:1.15rem; color:var(--ink-900); transition:color .3s; }
+  .color-item small{ margin-left:auto; font-family:var(--sans); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--stone-400); }
+  .color-item[aria-pressed="true"] span{ color:var(--accent-gold); }
+  .color-item[aria-pressed="true"] small{ color:var(--accent-gold); }
+
+  .color-stage{
+    position:relative; overflow:hidden; border-radius:2px;
+    background:var(--surface-1);
+    border:1px solid rgba(185,154,99,.12);
+    display:flex; align-items:flex-end;
+    padding:clamp(24px,3vw,42px);
+    min-height:260px;
+  }
+  .color-stage-media{ position:absolute; inset:0; z-index:0; }
+  .cs-img{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; opacity:0;
+    transition:opacity .7s var(--ease);
+  }
+  .cs-img.is-active{ opacity:1; }
+  .color-stage::before{
+    content:""; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg, rgba(15,13,10,.05) 0%, rgba(15,13,10,.28) 48%, rgba(15,13,10,.9) 100%);
+  }
+  .color-stage-glow{
+    position:absolute; inset:-20%; z-index:1;
+    filter:blur(60px);
+    opacity:.4;
+    mix-blend-mode:screen;
+    transition:background 0.6s var(--ease);
+  }
+  .color-stage-body{ position:relative; z-index:2; }
+  .color-stage-body .cs-name{ font-family:var(--serif); font-size:clamp(1.6rem,3vw,2.3rem); color:var(--ivory-100); display:block; margin-bottom:.3em; }
+  .color-stage-body .cs-meaning{ font-family:var(--sans); font-size:.95rem; letter-spacing:.03em; color:var(--cream-mute); }
+
+  /* ========== GALERIJA — kontinuirano kretanje iz centra ka ivicama ========== */
+  .gallery-section{
+    position:relative;
+    background:var(--charcoal-gallery);
+    padding-top:var(--section-pad);
+  }
+  .gallery-head{
+    max-width:640px; margin:0 auto 40px;
+    padding-inline:var(--gutter);
+    text-align:center;
+  }
+  .gallery-head .eyebrow{ display:block; margin-bottom:8px; }
+  .gallery-head h2{ color:var(--ivory-100); font-size:var(--fs-h2); margin-bottom:22px; }
+  .gallery-head p{ color:var(--cream-mute); font-size:var(--fs-lead); line-height:1.75; text-wrap:balance; max-width:52ch; margin-inline:auto; }
+  .flow-gallery{
+    position:relative; overflow:hidden;
+    background:var(--charcoal-gallery);
+    width:100%;
+    height:clamp(480px,58vw,760px);
+  }
+  .flow-item{
+    position:absolute; left:50%; top:50%;
+    width:clamp(150px,16vw,260px);
+    aspect-ratio:3/4;
+    will-change:transform,opacity;
+    animation-duration:var(--dur,27s);
+    animation-delay:var(--delay,0s);
+    animation-timing-function:cubic-bezier(.45,0,.55,1);
+    animation-iteration-count:infinite;
+  }
+  .flow-item .ph{ position:absolute; inset:0; }
+  .flow-item img.ph{ width:100%; height:100%; object-fit:cover; display:block; }
+  .flow-item--left{ animation-name:flowLeft; }
+  .flow-item--right{ animation-name:flowRight; }
+
+  @keyframes flowRight{
+    0%{ transform:translate(-50%,-50%) translateX(0) scale(.26); opacity:0; }
+    6%{ opacity:1; }
+    94%{ opacity:1; }
+    100%{ transform:translate(-50%,-50%) translateX(60vw) scale(2.3); opacity:0; }
+  }
+  @keyframes flowLeft{
+    0%{ transform:translate(-50%,-50%) translateX(0) scale(.26); opacity:0; }
+    6%{ opacity:1; }
+    94%{ opacity:1; }
+    100%{ transform:translate(-50%,-50%) translateX(-60vw) scale(2.3); opacity:0; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .flow-item{ animation-play-state:paused; }
+  }
+  @media (max-width:640px){
+    .flow-gallery{ height:clamp(520px,150vw,760px); }
+    .flow-item{ width:clamp(130px,30vw,190px); }
+  }
+
+  /* ========== CTA ========== */
+  .cta{
+    position:relative; background:var(--charcoal-950); overflow:hidden;
+    padding-block:clamp(90px,14vw,180px);
+    text-align:center;
+  }
+  .cta .ph{ position:absolute; inset:0; opacity:.85; width:100%; height:100%; object-fit:cover; display:block; }
+  .cta::before{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(38% 65% at 50% 46%, rgba(17,16,14,.75) 0%, transparent 72%),
+      radial-gradient(120% 90% at 50% 100%, rgba(74,32,40,.3) 0%, transparent 60%);
+  }
+  .cta-content{ position:relative; z-index:2; max-width:760px; margin-inline:auto; padding-inline:var(--gutter); }
+  .cta-content .eyebrow{ display:block; margin-bottom:8px; }
+  .cta-content h2{ color:var(--ivory-100); font-size:clamp(1.7rem,3.2vw,2.5rem); margin-bottom:6px; }
+  .cta-content .cta-line{ font-family:var(--serif); font-style:normal; color:var(--ivory-100); font-size:clamp(1.7rem,3.2vw,2.5rem); font-weight:400; display:block; margin-bottom:44px; }
+  .cta-content .cta-line .accent{ font-size:1em; }
+  .cta-contacts{
+    margin-top:56px; display:flex; flex-wrap:wrap; justify-content:center; gap:0;
+    border-top:1px solid rgba(185,154,99,.25);
+  }
+  .cta-contacts div{
+    flex:1 1 180px; padding:26px 18px; border-right:1px solid rgba(185,154,99,.25);
+    display:flex; flex-direction:column; gap:6px;
+  }
+  .cta-contacts div:last-child{ border-right:0; }
+  .cta-contacts span.label{ font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--champagne-300); }
+  .cta-contacts .value{ font-family:var(--serif); color:var(--ivory-100); font-size:1.02rem; }
+  .cta-contacts a.value{ text-decoration:none; transition:color .25s var(--ease); }
+  .cta-contacts a.value:hover{ color:var(--champagne-300); }
+
+  /* ========== FOOTER ========== */
+  footer{ background:var(--void); border-top:1px solid rgba(185,154,99,.16); padding-block:clamp(56px,6vw,80px) 28px; }
+  .footer-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:clamp(36px,5vw,60px); align-items:start; }
+  .footer-brand .brand{ color:var(--ivory-100); margin-bottom:18px; }
+  .footer-brand p{ font-family:var(--serif); font-style:italic; color:var(--cream-mute); font-size:1rem; max-width:260px; }
+  .footer-social{ display:flex; gap:16px; margin-top:20px; }
+  .footer-social a{ color:var(--cream-mute); display:inline-flex; transition:color .25s var(--ease); }
+  .footer-social a:hover{ color:var(--champagne-300); }
+  .footer-social svg{ width:18px; height:18px; }
+  .footer-col h5{ font-size:.7rem; line-height:1; letter-spacing:.2em; text-transform:uppercase; color:var(--champagne-300); margin-bottom:18px; font-weight:500; }
+  .footer-col ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px; }
+  .footer-col a, .footer-col li{ color:var(--cream-mute); font-size:.92rem; }
+  .footer-col a:hover{ color:var(--ivory-100); }
+  .footer-bottom{
+    margin-top:clamp(48px,6vw,72px); padding-top:22px; border-top:1px solid var(--line-on-dark);
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px;
+    font-size:.76rem; color:var(--cream-mute); letter-spacing:.02em;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width:980px){
+    .nav-links{ display:none; }
+    .nav-toggle{ display:block; }
+    .about .wrap{ grid-template-columns:1fr; gap:36px; }
+    .about-visual{ aspect-ratio:4/5; max-width:420px; margin-inline:auto; }
+    .services-grid{ grid-template-columns:repeat(2,1fr); }
+    .service-card, .service-card:nth-child(1), .service-card:nth-child(2), .service-card:nth-child(6), .service-card:nth-child(7){ grid-column:span 1; aspect-ratio:3/4; }
+    .service-card:nth-child(8){ grid-column:span 2; aspect-ratio:16/9; }
+    .colors-panel{ grid-template-columns:1fr; }
+    .footer-grid{ grid-template-columns:1fr 1fr; }
+    .footer-brand{ grid-column:1/-1; }
+  }
+  @media (max-width:640px){
+    .services-grid{ grid-template-columns:1fr; }
+    .service-card, .service-card:nth-child(1), .service-card:nth-child(2), .service-card:nth-child(6), .service-card:nth-child(7), .service-card:nth-child(8){ grid-column:span 1; aspect-ratio:4/5; }
+    .cta-contacts div{ border-right:0; border-bottom:1px solid rgba(185,154,99,.25); }
+    .cta-contacts div:last-child{ border-bottom:0; }
+    .footer-grid{ grid-template-columns:1fr; }
+  }
+  @media (max-width:760px){
+    /* Uzak/visok viewport: cover na širokom banner-u bi prikazao samo crni centar — pomeramo fokus na levi cvetni klaster */
+    .cta .ph{ object-position:12% center; opacity:.62; }
+  }
+</style>
+
+<header class="site-nav" id="siteNav">
+  <a href="#pocetna" class="brand">
+    <strong>ART &amp; DEKOR BOX</strong>
+    <span>Cvećara</span>
+  </a>
+  <nav class="nav-links" aria-label="Glavna navigacija">
+    <a href="#pocetna">Početna</a>
+    <a href="#o-nama">O nama</a>
+    <a href="#usluge">Usluge</a>
+    <a href="#govor-cveca">Govor cveća</a>
+    <a href="#galerija">Galerija</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Otvori meni" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <span class="eyebrow">Meni</span>
+  <a href="#pocetna">Početna</a>
+  <a href="#o-nama">O nama</a>
+  <a href="#usluge">Usluge</a>
+  <a href="#govor-cveca">Govor cveća</a>
+  <a href="#galerija">Galerija</a>
+  <a href="#kontakt">Kontakt</a>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="pocetna" aria-label="Naslovna sekcija">
+    <img class="hero-img" src="img/hero.jpg" alt="Luksuzna tamna floralna kompozicija sa božurima, ružama, ranunkulama i orhidejama u bordo, puder roze i krem tonovima" fetchpriority="high">
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-content">
+      <span class="eyebrow eyebrow--dark hero-eyebrow">Novi Bečej</span>
+      <div class="hero-brand">
+        <h1>Art &amp; Dekor<br>Box <span class="hero-brand-script">Cvećara</span></h1>
+      </div>
+      <p class="hero-sub">Cvetni aranžmani kreirani sa pažnjom, za trenutke koji imaju posebno značenje.</p>
+      <div class="hero-ctas">
+        <a href="#kontakt" class="btn btn--gold">Poručite odmah</a>
+        <a href="#galerija" class="btn btn--light">Galerija cveća</a>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <i></i>
+      <span>Skrolujte</span>
+    </div>
+  </section>
+
+  <!-- O NAMA -->
+  <section class="about reveal" id="o-nama" aria-labelledby="about-h">
+    <div class="wrap">
+      <img class="about-visual" src="img/about.webp" alt="Vlasnica cvećare ART & DEKOR BOX sa bujnim buketom belih tulipana i božura" loading="lazy">
+      <div class="about-copy">
+        <span class="eyebrow eyebrow--light">O nama</span>
+        <h2 id="about-h">Cveće koje nosi <em class="accent">vašu priču</em>.</h2>
+        <p>U ART &amp; DEKOR BOX verujemo da pravi aranžman nije samo izbor lepog cveća. On treba da prenese osećaj, iznenadi, obraduje i kaže nešto umesto vas.</p>
+        <p>Godinama stvaramo bukete i cvetne aranžmane za najrazličitije prilike, od malog znaka pažnje i rođendanskog iznenađenja, do venčanja, proslava, posebnih događaja i trenutaka kada je potrebno reći nešto mnogo dublje.</p>
+        <p>Volimo da svaki aranžman bude drugačiji. Nekada je to nežna kombinacija pastelnih tonova, nekada raskošno cveće dubokih boja, a nekada buket pun živih boja i energije.</p>
+        <p class="about-highlight">Ne postoji jedan pravi način da se emocija pretvori u cveće.</p>
+        <p>Pravi izbor je onaj koji odgovara trenutku i osobi kojoj je namenjen. Zato pažnju posvećujemo svakom detalju, od izbora cvetova i kombinovanja boja, do zelenila, oblika i načina na koji je aranžman upakovan. Jer verujemo da poklon počinje da govori mnogo pre nego što se poklon otvori.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- USLUGE -->
+  <section class="services reveal" id="usluge" aria-labelledby="services-h">
+    <div class="wrap">
+      <div class="services-head">
+        <span class="eyebrow eyebrow--dark">Usluge</span>
+        <h2 id="services-h">Za trenutke koji se <em class="accent">pamte.</em></h2>
+        <p>Postoje trenuci koje želimo da proslavimo. Trenuci koje želimo da zauvek pamtimo. Trenuci kada je cveće jedino što možemo da kažemo. Za svaki od njih stvaramo aranžman koji ima smisla.</p>
+      </div>
+      <div class="services-grid">
+        <article class="service-card">
+          <img class="ph" src="img/svc-vencanja-v2.webp" alt="Venčanje — svečani buket crvenih ruža sa kristalima" loading="lazy">
+          <div class="service-card-body">
+            <h3>Venčanja</h3>
+            <p>Od prvog cveta do poslednjeg detalja.</p>
+          </div>
+        </article>
+        <article class="service-card">
+          <img class="ph" src="img/svc-veridbe-v2.webp" alt="Veridba — korpa sa crvenim ružama" loading="lazy">
+          <div class="service-card-body">
+            <h3>Veridbe</h3>
+            <p>Za pitanje koje menja sve.</p>
+          </div>
+        </article>
+        <article class="service-card">
+          <img class="ph" src="img/svc-rodjendani-v2.webp" alt="Rođendan — šareni buket sa balonima" loading="lazy">
+          <div class="service-card-body">
+            <h3>Rođendani</h3>
+            <p>Poklon koji govori više od reči.</p>
+          </div>
+        </article>
+        <article class="service-card">
+          <img class="ph" src="img/svc-proslave-v2.webp" alt="Proslava — buket roze ruža" loading="lazy">
+          <div class="service-card-body">
+            <h3>Proslave</h3>
+            <p>Cveće koje menja atmosferu.</p>
+          </div>
+        </article>
+        <article class="service-card">
+          <img class="ph" src="img/svc-dekoracije-v2.webp" alt="Dekoracija prostora — novogodišnja jelka sa lampicama i vencem" loading="lazy">
+          <div class="service-card-body">
+            <h3>Dekoracije</h3>
+            <p>Prostor koji dobija svoju priču.</p>
+          </div>
+        </article>
+        <article class="service-card">
+          <img class="ph" src="img/svc-ikebane-v2.webp" alt="Ikebana — venac sa crvenim svećama, šišarkama i jesenjim detaljima" loading="lazy">
+          <div class="service-card-body">
+            <h3>Ikebane</h3>
+            <p>Kompozicije za poseban trenutak i prostor.</p>
+          </div>
+        </article>
+        <article class="service-card">
+          <img class="ph" src="img/svc-saksijsko-v2.webp" alt="Saksijsko cveće — asortiman sobnih biljaka i cvetnih aranžmana u cvećari" loading="lazy">
+          <div class="service-card-body">
+            <h3>Saksijsko cveće</h3>
+            <p>Biljke koje unose boju, svežinu i život u svaki prostor.</p>
+          </div>
+        </article>
+        <article class="service-card">
+          <img class="ph" src="img/svc-pozdrav-v2.webp" alt="Poslednji pozdrav — aranžman u belim i roze tonovima" loading="lazy">
+          <div class="service-card-body">
+            <h3>Poslednji pozdrav</h3>
+            <p>Sa pažnjom, dostojanstvom i poštovanjem.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOVOR CVEĆA -->
+  <section class="voice reveal" id="govor-cveca" aria-labelledby="voice-h">
+    <div class="wrap">
+      <div class="voice-head">
+        <span class="eyebrow eyebrow--light">Značenje i simbolika</span>
+        <h2 id="voice-h"><em class="accent">Govor</em> cveća</h2>
+        <span class="voice-tag">Ponekad je dovoljno izabrati <em class="accent">pravi cvet.</em></span>
+        <p>Još od davnina cveću se pripisuje značenje. Boja, oblik i vrsta cveta mogu reći ono što reči ne umeju. Istražite mali jezik cveća.</p>
+      </div>
+
+      <div class="voice-block">
+        <div class="voice-block-head"><h3>Boje cveća</h3><span class="rule"></span></div>
+        <div class="colors-panel">
+          <div class="color-list" role="tablist" aria-label="Boje cveća i njihovo značenje" id="colorList"></div>
+          <div class="color-stage">
+            <div class="color-stage-media">
+              <img class="cs-img is-active" id="colorImgA" src="img/color-crvena.webp" alt="Crvena — buket u toj boji">
+              <img class="cs-img" id="colorImgB" alt="">
+            </div>
+            <div class="color-stage-glow" id="colorGlow"></div>
+            <div class="color-stage-body">
+              <span class="cs-name" id="colorName">Crvena</span>
+              <span class="cs-meaning" id="colorMeaning">Ljubav · strast · snaga</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIJA -->
+  <section class="gallery-section reveal" id="galerija" aria-labelledby="gallery-h">
+    <div class="gallery-head">
+      <span class="eyebrow eyebrow--light">Naš rad</span>
+      <h2 id="gallery-h">Cveće, oblikovano sa <em class="accent">osećajem.</em></h2>
+      <p>Od nežnih buketa do raskošnih aranžmana, svaki komad nastaje sa idejom da trenutku da nešto posebno.</p>
+    </div>
+    <div class="flow-gallery" aria-hidden="true">
+      <div class="flow-item flow-item--left" style="--delay:0s;"><img class="ph" src="img/gallery-1.webp" data-slot="1" alt=""></div>
+      <div class="flow-item flow-item--left" style="--delay:-4.5s;"><img class="ph" src="img/gallery-2.webp" data-slot="2" alt=""></div>
+      <div class="flow-item flow-item--left" style="--delay:-9s;"><img class="ph" src="img/gallery-3.webp" data-slot="3" alt=""></div>
+      <div class="flow-item flow-item--left" style="--delay:-13.5s;"><img class="ph" src="img/gallery-4.webp" data-slot="4" alt=""></div>
+      <div class="flow-item flow-item--left" style="--delay:-18s;"><img class="ph" src="img/gallery-5.webp" data-slot="5" alt=""></div>
+      <div class="flow-item flow-item--left" style="--delay:-22.5s;"><img class="ph" src="img/gallery-6.webp" data-slot="6" alt=""></div>
+
+      <div class="flow-item flow-item--right" style="--delay:-2.25s;"><img class="ph" src="img/gallery-7.webp" data-slot="7" alt=""></div>
+      <div class="flow-item flow-item--right" style="--delay:-6.75s;"><img class="ph" src="img/gallery-8.webp" data-slot="8" alt=""></div>
+      <div class="flow-item flow-item--right" style="--delay:-11.25s;"><img class="ph" src="img/gallery-9.webp" data-slot="9" alt=""></div>
+      <div class="flow-item flow-item--right" style="--delay:-15.75s;"><img class="ph" src="img/gallery-10.webp" data-slot="10" alt=""></div>
+      <div class="flow-item flow-item--right" style="--delay:-20.25s;"><img class="ph" src="img/gallery-11.webp" data-slot="11" alt=""></div>
+      <div class="flow-item flow-item--right" style="--delay:-24.75s;"><img class="ph" src="img/gallery-12.webp" data-slot="12" alt=""></div>
+    </div>
+  </section>
+
+  <!-- CTA / KONTAKT -->
+  <section class="cta reveal" id="kontakt" aria-labelledby="cta-h">
+    <img class="ph" src="img/cta-bg.webp" alt="" aria-hidden="true">
+    <div class="cta-content">
+      <span class="eyebrow eyebrow--dark">Kontakt</span>
+      <h2 id="cta-h">Imate trenutak koji želite da učinite posebnim?</h2>
+      <span class="cta-line">Hajde da ga <em class="accent">pretvorimo u cveće.</em></span>
+      <a href="tel:+381637880928" class="btn btn--ghost-cream">Pozovite nas</a>
+      <div class="cta-contacts">
+        <div><span class="label">Facebook</span><a class="value" href="https://www.facebook.com/artdecorbox.viragkoteszet?locale=sr_RS" target="_blank" rel="noopener">Art &amp; Dekor Box</a></div>
+        <div><span class="label">Instagram</span><a class="value" href="https://www.instagram.com/cvetaj_sa_lidijom/" target="_blank" rel="noopener">@cvetaj_sa_lidijom</a></div>
+        <div><span class="label">Adresa</span><span class="value">Maršala Tita 11, Novi Bečej</span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#pocetna" class="brand">
+          <strong>ART &amp; DEKOR BOX</strong>
+          <span>Cvećara</span>
+        </a>
+        <p>„Cveće koje govori umesto vas."</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/artdecorbox.viragkoteszet?locale=sr_RS" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.6 21v-7.2h2.4l.4-2.9h-2.8v-1.8c0-.83.23-1.4 1.42-1.4h1.52V5.1c-.26-.04-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.13H7.9v2.9h2.63V21h3.07Z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/cvetaj_sa_lidijom/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="16.7" cy="7.3" r=".6" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navigacija</h5>
+        <ul>
+          <li><a href="#pocetna">Početna</a></li>
+          <li><a href="#o-nama">O nama</a></li>
+          <li><a href="#usluge">Usluge</a></li>
+          <li><a href="#govor-cveca">Govor cveća</a></li>
+          <li><a href="#galerija">Galerija</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Kontakt</h5>
+        <ul>
+          <li>Telefon: <a href="tel:+381637880928">063 788 0928</a></li>
+          <li><a href="tel:+381642900541">064 290 0541</a></li>
+          <li>Email: <a href="mailto:lidia.komaromi@gmail.com">lidia.komaromi@gmail.com</a></li>
+          <li>Adresa: Maršala Tita 11, Novi Bečej</li>
+          <li>Radno vreme: Pon–pet 08:00–17:00</li>
+          <li>Subota 08:00–16:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ART &amp; DEKOR BOX CVEĆARA</span>
+      <span>Sva prava zadržana.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Nav solid state */
+  var nav = document.getElementById('siteNav');
+  var toggleSolid = function(){
+    if (window.scrollY > 40) nav.classList.add('is-solid');
+    else nav.classList.remove('is-solid');
+  };
+  toggleSolid();
+  window.addEventListener('scroll', toggleSolid, { passive:true });
+
+  /* Mobile menu */
+  var navToggle = document.getElementById('navToggle');
+  var mobileMenu = document.getElementById('mobileMenu');
+  function closeMenu(){
+    mobileMenu.classList.remove('is-open');
+    navToggle.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded','false');
+    navToggle.setAttribute('aria-label','Otvori meni');
+  }
+  function openMenu(){
+    mobileMenu.classList.add('is-open');
+    navToggle.classList.add('is-open');
+    navToggle.setAttribute('aria-expanded','true');
+    navToggle.setAttribute('aria-label','Zatvori meni');
+  }
+  navToggle.addEventListener('click', function(){
+    mobileMenu.classList.contains('is-open') ? closeMenu() : openMenu();
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  /* Scroll reveal — progressive enhancement only */
+  if (!reduceMotion && 'IntersectionObserver' in window){
+    var revealEls = document.querySelectorAll('.reveal');
+    revealEls.forEach(function(el){ el.classList.add('is-hidden'); });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.classList.remove('is-hidden');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+
+  /* Govor cveća — boje */
+  var colors = [
+    { name:'Crvena', meaning:'Ljubav · strast · snaga', hex:'var(--c-red)', img:'img/color-crvena.webp' },
+    { name:'Bela', meaning:'Čistoća · mir · iskrenost', hex:'var(--c-white)', img:'img/color-bela.webp' },
+    { name:'Roze', meaning:'Nežnost · zahvalnost · nežna osećanja', hex:'var(--c-pink)', img:'img/color-roze.webp' },
+    { name:'Žuta', meaning:'Radost · prijateljstvo · toplina', hex:'var(--c-yellow)', img:'img/color-zuta.webp' },
+    { name:'Ljubičasta', meaning:'Elegancija · dostojanstvo · očaranost', hex:'var(--c-purple)', img:'img/color-ljubicasta.webp' },
+    { name:'Narandžasta', meaning:'Energija · entuzijazam · život', hex:'var(--c-orange)', img:'img/color-narandzasta.webp' }
+  ];
+  var colorList = document.getElementById('colorList');
+  var colorName = document.getElementById('colorName');
+  var colorMeaning = document.getElementById('colorMeaning');
+  var colorGlow = document.getElementById('colorGlow');
+  var csLayerA = document.getElementById('colorImgA');
+  var csLayerB = document.getElementById('colorImgB');
+  var csActiveLayer = csLayerA, csNextLayer = csLayerB;
+
+  /* preload the color photos so later crossfades are instant */
+  colors.forEach(function(c){ var pre = new Image(); pre.src = c.img; });
+
+  function setActiveColor(idx){
+    var c = colors[idx];
+    colorName.textContent = c.name;
+    colorMeaning.textContent = c.meaning;
+    colorGlow.style.background = 'radial-gradient(closest-side, ' + c.hex + ', transparent)';
+    csNextLayer.src = c.img;
+    csNextLayer.alt = c.name + ' — buket u toj boji';
+    csNextLayer.classList.add('is-active');
+    csActiveLayer.classList.remove('is-active');
+    var tmp = csActiveLayer; csActiveLayer = csNextLayer; csNextLayer = tmp;
+    colorList.querySelectorAll('.color-item').forEach(function(btn, i){
+      btn.setAttribute('aria-pressed', i === idx ? 'true' : 'false');
+    });
+  }
+
+  colors.forEach(function(c, i){
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'color-item';
+    btn.setAttribute('role','tab');
+    btn.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+    btn.innerHTML = '<span class="color-dot" style="background:' + c.hex + '"></span><span>' + c.name + '</span><small>' + (i+1) + '/06</small>';
+    btn.addEventListener('click', function(){ setActiveColor(i); });
+    btn.addEventListener('mouseenter', function(){ setActiveColor(i); });
+    colorList.appendChild(btn);
+  });
+  setActiveColor(0);
+})();
+</script>
